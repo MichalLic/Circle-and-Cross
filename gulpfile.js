@@ -9,7 +9,8 @@ var PATH = {
     ],
     DIST: './dist',
     static: [
-        './src/index.html'
+        './src/index.html',
+        './src/images/**'
     ]
 };
 
