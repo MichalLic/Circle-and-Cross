@@ -2,11 +2,11 @@ var PATH = {
     scss: './src/scss/**/*.scss',
     js: './src/js/**/*.js',
     js_vendor: [
-        './node_modules/jquery/dist/jquery.min.js',
+        './node_modules/jquery/dist/jquery.min.js'
     ],
-    css_vendor: [
-        './node_modules/bulma/css/bulma.css'
-    ],
+    //css_vendor: [
+    //    './node_modules/bulma/css/bulma.css'
+    //],
     DIST: './dist',
     static: [
         './src/index.html',
@@ -115,4 +115,4 @@ gulp.task('serve', function () {
 });
 
 // Initialization
-gulp.task('default', ['styles', 'copy', 'js', 'js-vendor'/*, 'css-vendor'*/, 'serve']);
+gulp.task('default', ['styles', 'copy', 'js', 'js-vendor', 'serve']);
