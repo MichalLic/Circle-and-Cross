@@ -30,3 +30,15 @@ main {
     display: flex;
     justify-content: center;
 }
+
+.hide-signs {
+    i {
+        display: none;
+    }
+}
+
+.show-circle{
+    i {
+        display: block;
+    }
+}
