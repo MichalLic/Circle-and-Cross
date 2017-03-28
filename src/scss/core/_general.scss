@@ -37,8 +37,14 @@ main {
     }
 }
 
-.show-circle{
-    i {
+.circle{
+    i.fa-circle-o {
+        display: block;
+    }
+}
+
+.cross {
+    i.fa-times {
         display: block;
     }
 }
