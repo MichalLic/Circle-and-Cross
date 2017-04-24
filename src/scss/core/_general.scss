@@ -30,6 +30,9 @@ main {
     display: flex;
     justify-content: center;
 }
+.flex-column{
+    flex-direction: column;
+}
 
 .hide-signs {
     i {
@@ -47,4 +50,8 @@ main {
     i.fa-times {
         display: block;
     }
+}
+
+.hide {
+    display: block;
 }
