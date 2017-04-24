@@ -73,7 +73,6 @@ var GameApp = {
             field.height(widthField);
         });
         $('.single-field i').css('line-height', widthField + 'px');
-        console.log(widthField);
         console.log(field.height(widthField));
     }
 
