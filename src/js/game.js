@@ -5,7 +5,7 @@ var GameApp = {
     //init
     init: function () {
         GameApp.setIdenticalHeight(GameApp.$GAME_FIELD);
-        GameApp.onChoose();
+        GameApp.onStart();
     },
 
     //functions
@@ -13,6 +13,7 @@ var GameApp = {
         GameApp.$GAME_FIELD.on('click', function (e) {
             e.preventDefault();
             console.log(this);
+
             if ($(this).hasClass('empty')) {
                 $(this).addClass('circle').removeClass('empty').siblings().addClass('next-cross').removeClass('empty');
                 $(this).css('pointer-events', 'none');
@@ -26,19 +27,36 @@ var GameApp = {
                 $(this).css('pointer-events', 'none');
             }
 
-            //GameApp.assignChar(this);
+            CheckFields.init();
+            // GameApp.assignChar(this);
         })
     },
 
-    assignChar: function (gameField) {
-        /*@see https://codepen.io/anon/pen/BWVYqV?editors=1100*/
-        /*https://codepen.io/JTParrett/pen/pDJAf*/
-        GameApp.show(gameField)
+    onStart: function () {
+      $('.btn-start').on('click', function () {
+          Players.init();
+          GameApp.onChoose();
+          GameApp.onRevenge();
+      })
     },
 
-    show: function (gameField) {
-        $(gameField).addClass('show-circle');
+    onRevenge: function () {
+        $('.btn-revenge').on('click', function () {
+           GameApp.$GAME_FIELD.removeClass('next-circle next-cross cross circle');
+           GameApp.$GAME_FIELD.css('pointer-events', 'auto');
+        })
     },
+
+
+    // assignChar: function (gameField) {
+        /*@see https://codepen.io/anon/pen/BWVYqV?editors=1100*/
+        /*https://codepen.io/JTParrett/pen/pDJAf*/
+        // GameApp.show(gameField)
+    // },
+
+    // show: function (gameField) {
+    //     $(gameField).addClass('show-circle');
+    // },
 
 
     setIdenticalHeight: function (field) {
