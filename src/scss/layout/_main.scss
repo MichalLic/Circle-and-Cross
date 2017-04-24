@@ -24,11 +24,16 @@ main {
 }
 
 .players-block {
+  width: 100%;
   margin: 40px 0;
 
   .player-box {
     display: flex;
     justify-content: flex-start;
+
+    &:first-of-type {
+      margin-bottom: 15px;
+    }
   }
 }
 

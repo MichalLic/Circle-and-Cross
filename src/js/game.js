@@ -42,6 +42,7 @@ var GameApp = {
             GameApp.onChoose();
             GameApp.showButton();
             GameApp.onRevenge();
+            GameApp.$BTN_START.addClass('hide');
         })
     },
 
@@ -69,8 +70,9 @@ var GameApp = {
     setIdenticalHeight: function (field) {
         var widthField = field.width();
         $(window).resize(function () {
-            field.height(widthField)
+            field.height(widthField);
         });
+        $('.single-field i').css('line-height', widthField + 'px');
         console.log(widthField);
         console.log(field.height(widthField));
     }

@@ -139,7 +139,6 @@ var CheckFields = {
         return false;
     },
 
-
     /**
      * block fields after click on this
      */
