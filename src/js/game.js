@@ -1,6 +1,8 @@
 var GameApp = {
-    $GAME_FIELD: $('.game-field'),
     //variables
+    $GAME_FIELD: $('.game-field'),
+    $BTN_REVENGE: $('.btn-revenge'),
+    $BTN_START: $('.btn-start'),
 
     //init
     init: function () {
@@ -9,11 +11,12 @@ var GameApp = {
     },
 
     //functions
+    /**
+     * sign field by circle or cross
+     */
     onChoose: function () {
         GameApp.$GAME_FIELD.on('click', function (e) {
             e.preventDefault();
-            console.log(this);
-
             if ($(this).hasClass('empty')) {
                 $(this).addClass('circle').removeClass('empty').siblings().addClass('next-cross').removeClass('empty');
                 $(this).css('pointer-events', 'none');
@@ -26,39 +29,43 @@ var GameApp = {
                 $(this).addClass('circle').siblings().addClass('next-cross');
                 $(this).css('pointer-events', 'none');
             }
-
             CheckFields.init();
-            // GameApp.assignChar(this);
         })
     },
 
+    /**
+     * init game functions
+     */
     onStart: function () {
-      $('.btn-start').on('click', function () {
-          Players.init();
-          GameApp.onChoose();
-          GameApp.onRevenge();
-      })
-    },
-
-    onRevenge: function () {
-        $('.btn-revenge').on('click', function () {
-           GameApp.$GAME_FIELD.removeClass('next-circle next-cross cross circle');
-           GameApp.$GAME_FIELD.css('pointer-events', 'auto');
+        GameApp.$BTN_START.on('click', function () {
+            Players.init();
+            GameApp.onChoose();
+            GameApp.showButton();
+            GameApp.onRevenge();
         })
     },
 
+    /**
+     * restart game
+     */
+    onRevenge: function () {
+        GameApp.$BTN_REVENGE.on('click', function () {
+            GameApp.$GAME_FIELD.removeClass('next-circle next-cross cross circle');
+            GameApp.$GAME_FIELD.css('pointer-events', 'auto');
+        })
+    },
 
-    // assignChar: function (gameField) {
-        /*@see https://codepen.io/anon/pen/BWVYqV?editors=1100*/
-        /*https://codepen.io/JTParrett/pen/pDJAf*/
-        // GameApp.show(gameField)
-    // },
+    /**
+     * show button
+     */
+    showButton: function () {
+        GameApp.$BTN_REVENGE.removeClass('hide');
+    },
 
-    // show: function (gameField) {
-    //     $(gameField).addClass('show-circle');
-    // },
-
-
+    /**
+     * set the same dimensions to game fields
+     * @param field
+     */
     setIdenticalHeight: function (field) {
         var widthField = field.width();
         $(window).resize(function () {
