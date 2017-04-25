@@ -15,19 +15,17 @@ var GameApp = {
      * sign field by circle or cross
      */
     onChoose: function () {
+        var currently = 1;
         GameApp.$GAME_FIELD.on('click', function (e) {
             e.preventDefault();
-            if ($(this).hasClass('empty')) {
-                $(this).addClass('circle').removeClass('empty').siblings().addClass('next-cross').removeClass('empty');
+            if(currently === 1) {
+                $(this).addClass('circle');
                 $(this).css('pointer-events', 'none');
-            }
-            else if ($(this).hasClass('next-cross')) {
-                $(this).addClass('cross').siblings().addClass('next-circle').removeClass('next-cross');
+                currently = 2;
+            } else {
+                $(this).addClass('cross');
                 $(this).css('pointer-events', 'none');
-            }
-            else {
-                $(this).addClass('circle').siblings().addClass('next-cross');
-                $(this).css('pointer-events', 'none');
+                currently = 1
             }
             CheckFields.init();
         })
